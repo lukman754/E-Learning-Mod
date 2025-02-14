@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "E-Learning Mod",
+  "version": "1.0",
+  "description": "Run JavaScript files in browser console",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"],
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.unpam.ac.id/login/*"],
+      "js": ["login_style.js", "login_confirm.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://*.unpam.ac.id/my/courses.php"],
+      "js": ["dashboard.js", "tracking.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://*.unpam.ac.id/mod/forum/*"],
+      "js": ["course-discus.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://*.unpam.ac.id/*"],
+      "js": ["theme.js", "main.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "action": {
+    "default_title": "Console Runner"
+  }
+}
